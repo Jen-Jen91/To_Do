@@ -1,19 +1,8 @@
 import React from 'react';
-import {SafeAreaView, ScrollView, View, Text, StatusBar} from 'react-native';
+import Navigator from './src/Navigator.js';
 
 const App = () => {
-  return (
-    <>
-      <StatusBar />
-      <SafeAreaView>
-        <ScrollView>
-          <View>
-            <Text>To Do App</Text>
-          </View>
-        </ScrollView>
-      </SafeAreaView>
-    </>
-  );
+  return <Navigator />;
 };
 
 export default App;
