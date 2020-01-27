@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
-import {View, Text, TextInput} from 'react-native';
+import {View, Text} from 'react-native';
+import TaskInput from './TaskInput';
+import TaskList from './TaskList';
 
 class Home extends Component {
   constructor(props) {
@@ -11,36 +13,39 @@ class Home extends Component {
   }
 
   onTaskTyped = task => {
-    console.log('TASK: ', task);
     this.setState({inputValue: task});
   };
 
   onTaskAdded = task => {
-    console.log('TASK: ', task);
     // eslint-disable-next-line curly
     if (task.length === 0) return;
+
+    const newTask = {
+      text: task,
+      date: Date.now(),
+      isComplete: false,
+    };
+
     this.setState(prevState => ({
       inputValue: '',
-      tasks: [...prevState.tasks, task],
+      tasks: [...prevState.tasks, newTask],
     }));
   };
 
   render() {
+    console.log('ALL TASKS: ', this.state.tasks);
+
     return (
       <View>
         <Text>HOME</Text>
 
-        <TextInput
+        <TaskInput
           value={this.state.inputValue}
-          placeholder="Type a task..."
-          onChangeText={this.onTaskTyped}
-          onSubmitEditing={event => this.onTaskAdded(event.nativeEvent.text)}
-          c
+          onTaskTyped={this.onTaskTyped}
+          onTaskAdded={this.onTaskAdded}
         />
 
-        {this.state.tasks.map((task, id) => {
-          return <Text key={id}>{task}</Text>;
-        })}
+        <TaskList tasks={this.state.tasks} />
       </View>
     );
   }
