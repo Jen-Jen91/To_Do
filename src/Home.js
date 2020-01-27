@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {View, Text} from 'react-native';
 import TaskInput from './TaskInput';
 import TaskList from './TaskList';
+import {saveTask, getAllTasks} from './helpers/AsyncStorage';
 
 class Home extends Component {
   constructor(props) {
@@ -11,6 +12,21 @@ class Home extends Component {
       tasks: [],
     };
   }
+
+  componentDidMount() {
+    this.initializeTaskList();
+  }
+
+  initializeTaskList = async () => {
+    try {
+      const allItems = await getAllTasks('ToDos');
+      this.setState({
+        tasks: allItems || [],
+      });
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   onTaskTyped = task => {
     this.setState({inputValue: task});
@@ -26,15 +42,16 @@ class Home extends Component {
       isComplete: false,
     };
 
-    this.setState(prevState => ({
-      inputValue: '',
-      tasks: [...prevState.tasks, newTask],
-    }));
+    this.setState(
+      prevState => ({
+        inputValue: '',
+        tasks: [...prevState.tasks, newTask],
+      }),
+      () => saveTask(this.state.tasks),
+    );
   };
 
   render() {
-    console.log('ALL TASKS: ', this.state.tasks);
-
     return (
       <View>
         <Text>HOME</Text>

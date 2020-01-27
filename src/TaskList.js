@@ -7,6 +7,8 @@ class TaskList extends Component {
   }
 
   render() {
+    console.log('DATA: ', this.props.tasks);
+
     return (
       <FlatList
         data={this.props.tasks}
