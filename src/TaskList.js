@@ -20,7 +20,7 @@ class TaskList extends Component {
               justifyContent: 'space-between',
             }}>
             <Text
-              style={{color: item.isComplete ? 'green' : 'red'}}
+              style={{color: item.isComplete ? 'grey' : 'green'}}
               onPress={() => this.props.onTaskClicked(item)}>
               {item.text}
             </Text>

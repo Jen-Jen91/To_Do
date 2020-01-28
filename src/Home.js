@@ -58,19 +58,15 @@ class Home extends Component {
   };
 
   onTaskClicked = clickedTask => {
-    const newTask = {
-      text: clickedTask.text,
-      date: clickedTask.date,
-      isComplete: !clickedTask.isComplete,
-    };
+    const updatedTasks = this.state.tasks;
 
-    const filteredTasks = this.state.tasks.filter(
-      task => task.date !== newTask.date,
-    );
+    updatedTasks.forEach(task => {
+      if (task.date === clickedTask.date) {
+        task.isComplete = !task.isComplete;
+      }
+    });
 
-    filteredTasks.push(newTask);
-
-    this.setState({tasks: filteredTasks}, () => saveTask(this.state.tasks));
+    this.setState({tasks: updatedTasks}, () => saveTask(this.state.tasks));
   };
 
   onTaskDeleted = deletedTask => {
