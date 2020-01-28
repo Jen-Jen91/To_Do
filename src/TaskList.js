@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Text, FlatList} from 'react-native';
+import {View, Text, FlatList} from 'react-native';
 
 class TaskList extends Component {
   constructor(props) {
@@ -12,7 +12,21 @@ class TaskList extends Component {
     return (
       <FlatList
         data={this.props.tasks}
-        renderItem={({item}) => <Text>{item.text}</Text>}
+        renderItem={({item}) => (
+          <View
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+            }}>
+            <Text
+              style={{color: item.isComplete ? 'green' : 'red'}}
+              onPress={() => this.props.onTaskClicked(item)}>
+              {item.text}
+            </Text>
+            <Text onPress={() => this.props.onTaskDeleted(item)}>DELETE</Text>
+          </View>
+        )}
         keyExtractor={item => item.date.toString()}
       />
     );

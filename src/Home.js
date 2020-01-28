@@ -11,6 +11,12 @@ class Home extends Component {
       inputValue: '',
       tasks: [],
     };
+
+    this.initializeTaskList = this.initializeTaskList.bind(this);
+    this.onTaskTyped = this.onTaskTyped.bind(this);
+    this.onTaskAdded = this.onTaskAdded.bind(this);
+    this.onTaskClicked = this.onTaskClicked.bind(this);
+    this.onTaskDeleted = this.onTaskDeleted.bind(this);
   }
 
   componentDidMount() {
@@ -51,6 +57,30 @@ class Home extends Component {
     );
   };
 
+  onTaskClicked = clickedTask => {
+    const newTask = {
+      text: clickedTask.text,
+      date: clickedTask.date,
+      isComplete: !clickedTask.isComplete,
+    };
+
+    const filteredTasks = this.state.tasks.filter(
+      task => task.date !== newTask.date,
+    );
+
+    filteredTasks.push(newTask);
+
+    this.setState({tasks: filteredTasks}, () => saveTask(this.state.tasks));
+  };
+
+  onTaskDeleted = deletedTask => {
+    const filteredTasks = this.state.tasks.filter(
+      task => task.date !== deletedTask.date,
+    );
+
+    this.setState({tasks: filteredTasks}, () => saveTask(this.state.tasks));
+  };
+
   render() {
     return (
       <View>
@@ -62,7 +92,11 @@ class Home extends Component {
           onTaskAdded={this.onTaskAdded}
         />
 
-        <TaskList tasks={this.state.tasks} />
+        <TaskList
+          tasks={this.state.tasks}
+          onTaskClicked={this.onTaskClicked}
+          onTaskDeleted={this.onTaskDeleted}
+        />
       </View>
     );
   }

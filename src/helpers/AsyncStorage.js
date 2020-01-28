@@ -10,18 +10,6 @@ export async function saveTask(value) {
   console.log('Finished saving task');
 }
 
-// REMOVE TASK USING HOME SCREEN STATE - FILTER STATE ARRAY (REMOVE ONE ITEM FROM THAT ARRAY) - THEN SET "ToDos" IN ASYNCSTORAGE (OVERWRITES PREVIOUS STORAGE BUT NOW WITH ONE LESS TASK) - THE SAME CAN BE DONE FOR UPDATING isCompleted
-
-// export async function removeTask(key) {
-//   try {
-//     await AsyncStorage.removeItem(JSON.stringify(key));
-//   } catch (e) {
-//     console.error('Error removing task');
-//   }
-
-//   console.log('Finished removing task');
-// }
-
 export async function getAllTasks() {
   let allTasks = null;
   try {
@@ -33,3 +21,13 @@ export async function getAllTasks() {
   console.log('DONE: ', allTasks);
   return JSON.parse(allTasks);
 }
+
+// export async function clearAll() {
+//   try {
+//     await AsyncStorage.clear();
+//   } catch (e) {
+//     // clear error
+//   }
+
+//   console.log('Done.');
+// }
