@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, StyleSheet} from 'react-native';
 import TaskInput from './TaskInput';
 import TaskList from './TaskList';
 import {saveTask, getAllTasks} from './helpers/AsyncStorage';
+import {SafeAreaView} from 'react-native-safe-area-context';
 
 class Home extends Component {
   constructor(props) {
@@ -79,23 +80,53 @@ class Home extends Component {
 
   render() {
     return (
-      <View>
-        <Text>HOME</Text>
+      <SafeAreaView style={[styles.container]}>
+        <View style={[styles.header]}>
+          <Text style={[styles.headerText]}>To Do</Text>
+        </View>
 
-        <TaskInput
-          value={this.state.inputValue}
-          onTaskTyped={this.onTaskTyped}
-          onTaskAdded={this.onTaskAdded}
-        />
+        <View style={[styles.toDoContainer]}>
+          <TaskInput
+            value={this.state.inputValue}
+            onTaskTyped={this.onTaskTyped}
+            onTaskAdded={this.onTaskAdded}
+          />
 
-        <TaskList
-          tasks={this.state.tasks}
-          onTaskClicked={this.onTaskClicked}
-          onTaskDeleted={this.onTaskDeleted}
-        />
-      </View>
+          <TaskList
+            tasks={this.state.tasks}
+            onTaskClicked={this.onTaskClicked}
+            onTaskDeleted={this.onTaskDeleted}
+          />
+        </View>
+      </SafeAreaView>
     );
   }
 }
 
 export default Home;
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: 'rgb(193, 226, 246)',
+  },
+  header: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'blue',
+    paddingTop: 5,
+    paddingBottom: 5,
+    marginBottom: 30,
+  },
+  headerText: {
+    color: 'white',
+    fontSize: 24,
+    fontWeight: '700',
+  },
+  toDoContainer: {
+    backgroundColor: 'pink',
+    marginLeft: 20,
+    marginRight: 20,
+  },
+});
