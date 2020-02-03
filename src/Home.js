@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, SafeAreaView} from 'react-native';
 import TaskInput from './TaskInput';
 import TaskList from './TaskList';
 import {saveTask, getAllTasks} from './helpers/AsyncStorage';
-import {SafeAreaView} from 'react-native-safe-area-context';
 
 class Home extends Component {
   constructor(props) {
@@ -134,5 +133,6 @@ const styles = StyleSheet.create({
   toDoContainer: {
     marginLeft: 20,
     marginRight: 20,
+    flex: 1,
   },
 });
