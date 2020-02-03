@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {View, Text, FlatList, StyleSheet, TouchableOpacity} from 'react-native';
+import Trash from './icons/trash-2-outline.svg';
 
 class TaskList extends Component {
   constructor(props) {
@@ -29,7 +30,7 @@ class TaskList extends Component {
             <TouchableOpacity
               style={[styles.deleteButton]}
               onPress={() => this.props.onTaskDeleted(item)}>
-              <Text>DELETE</Text>
+              <Trash width={40} height={40} fill={'red'} />
             </TouchableOpacity>
           </View>
         )}
