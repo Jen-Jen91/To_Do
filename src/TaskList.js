@@ -1,11 +1,35 @@
 import React, {Component} from 'react';
-import {View, Text, FlatList, StyleSheet, TouchableOpacity} from 'react-native';
+import {
+  View,
+  Text,
+  FlatList,
+  StyleSheet,
+  TouchableOpacity,
+  Alert,
+} from 'react-native';
 import Trash from './icons/trash-2-outline.svg';
 
 class TaskList extends Component {
   constructor(props) {
     super(props);
+
+    this.deleteTask = this.deleteTask.bind(this);
   }
+
+  deleteTask = task => {
+    Alert.alert(
+      'Delete Task',
+      'Are you sure you want to delete this task?',
+      [
+        {
+          text: 'Cancel',
+          style: 'cancel',
+        },
+        {text: 'Yes', onPress: () => this.props.onTaskDeleted(task)},
+      ],
+      {cancelable: false},
+    );
+  };
 
   render() {
     return (
@@ -27,7 +51,7 @@ class TaskList extends Component {
             </TouchableOpacity>
             <TouchableOpacity
               style={[styles.deleteButton]}
-              onPress={() => this.props.onTaskDeleted(item)}>
+              onPress={() => this.deleteTask(item)}>
               <Trash width={30} height={30} fill={'rgb(164, 23, 52)'} />
             </TouchableOpacity>
           </View>
