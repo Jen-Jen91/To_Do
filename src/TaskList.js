@@ -8,6 +8,7 @@ import {
   Alert,
 } from 'react-native';
 import Trash from './icons/trash-2-outline.svg';
+import Award from './icons/award-outline.svg';
 
 class TaskList extends Component {
   constructor(props) {
@@ -32,7 +33,7 @@ class TaskList extends Component {
   };
 
   render() {
-    return (
+    return this.props.tasks.length ? (
       <FlatList
         data={this.props.tasks}
         renderItem={({item}) => (
@@ -58,6 +59,11 @@ class TaskList extends Component {
         )}
         keyExtractor={item => item.date.toString()}
       />
+    ) : (
+      <View style={[styles.noTasksContainer]}>
+        <Text style={[styles.noTasks]}>You have no tasks!</Text>
+        <Award width={30} height={30} fill={'rgb(164, 23, 52)'} />
+      </View>
     );
   }
 }
@@ -96,5 +102,13 @@ const styles = StyleSheet.create({
   },
   taskNotComplete: {
     color: 'rgb(33, 42, 127)',
+  },
+  noTasksContainer: {
+    alignItems: 'center',
+  },
+  noTasks: {
+    color: 'rgb(33, 42, 127)',
+    fontSize: 20,
+    marginBottom: 10,
   },
 });
