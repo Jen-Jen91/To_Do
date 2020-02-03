@@ -8,8 +8,6 @@ class TaskList extends Component {
   }
 
   render() {
-    console.log('DATA: ', this.props.tasks);
-
     return (
       <FlatList
         data={this.props.tasks}
@@ -30,7 +28,7 @@ class TaskList extends Component {
             <TouchableOpacity
               style={[styles.deleteButton]}
               onPress={() => this.props.onTaskDeleted(item)}>
-              <Trash width={40} height={40} fill={'red'} />
+              <Trash width={30} height={30} fill={'rgb(164, 23, 52)'} />
             </TouchableOpacity>
           </View>
         )}
@@ -48,41 +46,31 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: 'white',
-    height: 50,
-    maxHeight: 50,
     marginBottom: 15,
     borderRadius: 10,
     width: '100%',
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
+    elevation: 3,
   },
   taskButton: {
-    backgroundColor: 'orange',
-    width: '80%',
+    width: '85%',
     height: '100%',
     justifyContent: 'center',
     padding: 10,
     borderRadius: 10,
   },
   deleteButton: {
-    backgroundColor: 'purple',
-    width: '20%',
+    width: '15%',
     height: '100%',
+    alignItems: 'center',
     justifyContent: 'center',
     padding: 10,
     borderRadius: 10,
   },
   taskComplete: {
-    color: 'rgb(193, 226, 246)',
+    color: 'rgb(195, 198, 221)',
     textDecorationLine: 'line-through',
   },
   taskNotComplete: {
-    color: 'rgb(50, 92, 118)',
+    color: 'rgb(33, 42, 127)',
   },
 });

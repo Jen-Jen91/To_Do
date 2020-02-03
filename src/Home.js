@@ -18,6 +18,7 @@ class Home extends Component {
     this.onTaskAdded = this.onTaskAdded.bind(this);
     this.onTaskClicked = this.onTaskClicked.bind(this);
     this.onTaskDeleted = this.onTaskDeleted.bind(this);
+    this.onTaskCleared = this.onTaskCleared.bind(this);
   }
 
   componentDidMount() {
@@ -78,11 +79,15 @@ class Home extends Component {
     this.setState({tasks: filteredTasks}, () => saveTask(this.state.tasks));
   };
 
+  onTaskCleared = () => {
+    this.setState({inputValue: ''});
+  };
+
   render() {
     return (
       <SafeAreaView style={[styles.container]}>
         <View style={[styles.header]}>
-          <Text style={[styles.headerText]}>To Do</Text>
+          <Text style={[styles.headerText]}>All Tasks</Text>
         </View>
 
         <View style={[styles.toDoContainer]}>
@@ -90,6 +95,7 @@ class Home extends Component {
             value={this.state.inputValue}
             onTaskTyped={this.onTaskTyped}
             onTaskAdded={this.onTaskAdded}
+            onTaskCleared={this.onTaskCleared}
           />
 
           <TaskList
@@ -114,18 +120,18 @@ const styles = StyleSheet.create({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'blue',
+    backgroundColor: 'rgb(164, 23, 52)',
     paddingTop: 5,
     paddingBottom: 5,
     marginBottom: 30,
+    height: '20%',
   },
   headerText: {
     color: 'white',
-    fontSize: 24,
+    fontSize: 32,
     fontWeight: '700',
   },
   toDoContainer: {
-    backgroundColor: 'pink',
     marginLeft: 20,
     marginRight: 20,
   },
