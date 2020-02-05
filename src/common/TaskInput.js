@@ -9,7 +9,7 @@ class TaskInput extends Component {
 
   render() {
     return (
-      <View style={[styles.inputContainer]}>
+      <View style={styles.inputContainer}>
         <TextInput
           value={this.props.value}
           placeholder={this.props.placeholder}
