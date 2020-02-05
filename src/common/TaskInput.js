@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {View, TextInput, StyleSheet, TouchableOpacity} from 'react-native';
-import Cross from './icons/close-circle-outline.svg';
+import Cross from '../icons/close-circle-outline.svg';
 
 class TaskInput extends Component {
   constructor(props) {
@@ -12,7 +12,7 @@ class TaskInput extends Component {
       <View style={[styles.inputContainer]}>
         <TextInput
           value={this.props.value}
-          placeholder="Type to add a new task..."
+          placeholder={this.props.placeholder}
           placeholderTextColor="rgb(195, 198, 221)"
           onChangeText={this.props.onTaskTyped}
           onSubmitEditing={event =>

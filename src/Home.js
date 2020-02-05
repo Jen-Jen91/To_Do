@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {View, Text, StyleSheet, SafeAreaView} from 'react-native';
-import TaskInput from './TaskInput';
+import TaskInput from './common/TaskInput';
 import TaskList from './TaskList';
 import {saveTask, getAllTasks} from './helpers/AsyncStorage';
 
@@ -105,6 +105,7 @@ class Home extends Component {
         <View style={[styles.toDoContainer]}>
           <TaskInput
             value={this.state.inputValue}
+            placeholder="Type to add a new task..."
             onTaskTyped={this.onTaskTyped}
             onTaskAdded={this.onTaskAdded}
             onTaskCleared={this.onTaskCleared}

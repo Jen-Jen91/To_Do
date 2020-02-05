@@ -1,18 +1,10 @@
 import React, {Component} from 'react';
-import {
-  View,
-  Text,
-  FlatList,
-  StyleSheet,
-  TouchableOpacity,
-  Alert,
-  Modal,
-  TextInput,
-} from 'react-native';
+import {View, Text, FlatList, StyleSheet, TouchableOpacity} from 'react-native';
 import Trash from './icons/trash-2-outline.svg';
 import Award from './icons/award-outline.svg';
 import Edit from './icons/edit-outline.svg';
 import UpdateModal from './common/UpdateModal';
+import TaskInput from './common/TaskInput';
 
 class TaskList extends Component {
   constructor(props) {
@@ -43,13 +35,14 @@ class TaskList extends Component {
             })
           }>
           {this.state.modalText.length < 1 && (
-            <TextInput
+            <TaskInput
               value={this.state.editableTask}
-              onChangeText={task => this.setState({editableTask: task})}
-              onSubmitEditing={event =>
-                this.props.onTaskAdded(event.nativeEvent.text)
-              }
+              onTaskTyped={task => this.setState({editableTask: task})}
               style={[styles.input]}
+              onTaskCleared={() => this.setState({editableTask: ''})}
+              onTaskAdded={task => {
+                this.setState({editableTask: task});
+              }}
             />
           )}
         </UpdateModal>
