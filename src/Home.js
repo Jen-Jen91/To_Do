@@ -18,6 +18,7 @@ class Home extends Component {
     this.onTaskClicked = this.onTaskClicked.bind(this);
     this.onTaskDeleted = this.onTaskDeleted.bind(this);
     this.onTaskCleared = this.onTaskCleared.bind(this);
+    this.onTaskUpdated = this.onTaskUpdated.bind(this);
   }
 
   componentDidMount() {
@@ -56,6 +57,18 @@ class Home extends Component {
       }),
       () => saveTask(this.state.tasks),
     );
+  };
+
+  onTaskUpdated = updatedTask => {
+    const updatedTasks = this.state.tasks;
+
+    updatedTasks.forEach(task => {
+      if (task.date === updatedTask.date) {
+        task.text = updatedTask.text;
+      }
+    });
+
+    this.setState({tasks: updatedTasks}, () => saveTask(this.state.tasks));
   };
 
   onTaskClicked = clickedTask => {
@@ -101,6 +114,8 @@ class Home extends Component {
             tasks={this.state.tasks}
             onTaskClicked={this.onTaskClicked}
             onTaskDeleted={this.onTaskDeleted}
+            onTaskTyped={this.onTaskTyped}
+            onTaskUpdated={this.onTaskUpdated}
           />
         </View>
       </SafeAreaView>
