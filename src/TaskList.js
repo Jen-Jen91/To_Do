@@ -5,6 +5,7 @@ import Award from './icons/award-outline.svg';
 import Edit from './icons/edit-outline.svg';
 import UpdateModal from './common/UpdateModal';
 import TaskInput from './common/TaskInput';
+import {COLORS} from './common/Colors';
 
 class TaskList extends Component {
   constructor(props) {
@@ -83,7 +84,7 @@ class TaskList extends Component {
                     },
                   })
                 }>
-                <Edit width={30} height={30} fill={'rgb(33, 42, 127)'} />
+                <Edit width={30} height={30} fill={COLORS.DARK_BLUE} />
               </TouchableOpacity>
 
               <TouchableOpacity
@@ -105,7 +106,7 @@ class TaskList extends Component {
                     },
                   })
                 }>
-                <Trash width={30} height={30} fill={'rgb(164, 23, 52)'} />
+                <Trash width={30} height={30} fill={COLORS.RED} />
               </TouchableOpacity>
             </View>
           )}
@@ -115,7 +116,7 @@ class TaskList extends Component {
     ) : (
       <View style={[styles.noTasksContainer]}>
         <Text style={[styles.noTasks]}>You have no tasks!</Text>
-        <Award width={30} height={30} fill={'rgb(164, 23, 52)'} />
+        <Award width={30} height={30} fill={COLORS.RED} />
       </View>
     );
   }
@@ -128,7 +129,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: 'white',
+    backgroundColor: COLORS.WHITE,
     marginBottom: 15,
     borderRadius: 10,
     width: '100%',
@@ -158,28 +159,28 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   taskComplete: {
-    color: 'rgb(195, 198, 221)',
+    color: COLORS.GREY,
     textDecorationLine: 'line-through',
   },
   taskNotComplete: {
-    color: 'rgb(33, 42, 127)',
+    color: COLORS.DARK_BLUE,
   },
   noTasksContainer: {
     alignItems: 'center',
   },
   noTasks: {
-    color: 'rgb(33, 42, 127)',
+    color: COLORS.DARK_BLUE,
     fontSize: 20,
     marginBottom: 10,
   },
   modal: {
-    backgroundColor: 'rgba(0, 0, 0, 0.7)',
+    backgroundColor: COLORS.TRANSPARENT_BLACK,
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
   },
   editTaskContainer: {
-    backgroundColor: 'white',
+    backgroundColor: COLORS.WHITE,
     alignItems: 'center',
     justifyContent: 'center',
     height: 100,

@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {View, Text, StyleSheet, TouchableOpacity, Modal} from 'react-native';
+import {COLORS} from './Colors';
 
 class UpdateModal extends Component {
   constructor(props) {
@@ -42,13 +43,13 @@ export default UpdateModal;
 
 const styles = StyleSheet.create({
   modal: {
-    backgroundColor: 'rgba(0, 0, 0, 0.7)',
+    backgroundColor: COLORS.TRANSPARENT_BLACK,
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
   },
   container: {
-    backgroundColor: 'white',
+    backgroundColor: COLORS.WHITE,
     alignItems: 'center',
     justifyContent: 'center',
     height: '40%',
@@ -60,13 +61,13 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 24,
     fontWeight: '700',
-    color: 'rgb(33, 42, 127)',
+    color: COLORS.DARK_BLUE,
     marginBottom: 20,
   },
   text: {
     textAlign: 'center',
     fontSize: 18,
-    color: 'rgb(33, 42, 127)',
+    color: COLORS.DARK_BLUE,
     marginBottom: 40,
   },
   buttonContainer: {
@@ -75,7 +76,7 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   cancelButton: {
-    backgroundColor: 'rgb(195, 198, 221)',
+    backgroundColor: COLORS.GREY,
     width: 80,
     height: 40,
     alignItems: 'center',
@@ -84,7 +85,7 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   submitButton: {
-    backgroundColor: 'rgb(33, 42, 127)',
+    backgroundColor: COLORS.DARK_BLUE,
     width: 80,
     height: 40,
     alignItems: 'center',
@@ -95,6 +96,6 @@ const styles = StyleSheet.create({
   buttonText: {
     fontSize: 18,
     fontWeight: '700',
-    color: 'white',
+    color: COLORS.WHITE,
   },
 });

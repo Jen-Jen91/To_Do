@@ -3,6 +3,7 @@ import {View, Text, StyleSheet, SafeAreaView} from 'react-native';
 import TaskInput from './common/TaskInput';
 import TaskList from './TaskList';
 import {saveTask, getAllTasks} from './helpers/AsyncStorage';
+import {COLORS} from './common/Colors';
 
 class Home extends Component {
   constructor(props) {
@@ -129,20 +130,20 @@ export default Home;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'rgb(193, 226, 246)',
+    backgroundColor: COLORS.LIGHT_BLUE,
   },
   header: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'rgb(164, 23, 52)',
+    backgroundColor: COLORS.RED,
     paddingTop: 5,
     paddingBottom: 5,
     marginBottom: 30,
     height: '20%',
   },
   headerText: {
-    color: 'white',
+    color: COLORS.WHITE,
     fontSize: 32,
     fontWeight: '700',
   },
